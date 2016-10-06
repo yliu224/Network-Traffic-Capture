@@ -1,0 +1,2805 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SharpPcap</name>
+    </assembly>
+    <members>
+        <member name="T:SharpPcap.Packets.IPv6Fields_Fields">
+            <summary>
+            A struct containing length and position information about IPv6 Fields.
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv6Fields_Fields.LINE_ONE_LEN">
+            <summary>
+            The IP Version, Traffic Class, and Flow Label field length. These must be in one
+            field due to boundary crossings.
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv6Fields_Fields.PAYLOAD_LENGTH_LEN">
+            <summary>
+            The payload length field length.
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv6Fields_Fields.NEXT_HEADER_LEN">
+            <summary>
+            The next header field length.
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv6Fields_Fields.HOP_LIMIT_LEN">
+            <summary>
+            The hop limit field length.
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv6Fields_Fields.SRC_ADDRESS_LEN">
+            <summary>
+            The source address field length.
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv6Fields_Fields.DST_ADDRESS_LEN">
+            <summary>
+            The destination address field length.
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv6Fields_Fields.LINE_ONE_POS">
+            <summary>
+            The byte position of the field line in the IPv6 header.
+            This is where the IP version, Traffic Class, and Flow Label fields are.
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv6Fields_Fields.PAYLOAD_LENGTH_POS">
+            <summary>
+            The byte position of the payload length field.
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv6Fields_Fields.NEXT_HEADER_POS">
+            <summary>
+            The byte position of the next header field. (Replaces the ipv4 protocol field)
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv6Fields_Fields.HOP_LIMIT_POS">
+            <summary>
+            The byte position of the hop limit field.
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv6Fields_Fields.SRC_ADDRESS_POS">
+            <summary>
+            The byte position of the source address field.
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv6Fields_Fields.DST_ADDRESS_POS">
+            <summary>
+            The byte position of the destination address field.
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv6Fields_Fields.IPv6_HEADER_LEN">
+            <summary>
+            The byte length of the IPv6 Header
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPv6Fields_Fields.#cctor">
+            <summary>
+            Commutes the field positions.
+            </summary>
+        </member>
+        <member name="T:SharpPcap.Pcap">
+            <summary>
+            Summary description for SharpPcap.
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Pcap.INFINITE">
+            <summary>Represents the infinite number for packet captures </summary>
+        </member>
+        <member name="F:SharpPcap.Pcap.PCAP_NAME_PREFIX">
+            <summary>A string value that prefixes avery pcap device name </summary>
+        </member>
+        <member name="M:SharpPcap.Pcap.GetAllDevices">
+            <summary>
+            Depreciated: Backwards compatability wrapper around PcapDeviceList. Don't use this.
+            </summary>
+            <returns>A List of PcapDevices</returns>
+        </member>
+        <member name="M:SharpPcap.Pcap.GetPcapDevice(System.String)">
+            <summary>
+            Depreciated: Backwards compatability wrapper around Pcap.Devices[string Name].  Don't use this.
+            </summary>
+            <param name="pcapDeviceName">The name of a device.</param>
+            <returns>A PcapDevice</returns>
+        </member>
+        <member name="T:SharpPcap.Pcap.PacketArrivalEvent">
+            <summary>A delegate for Packet Arrival events</summary>
+        </member>
+        <member name="T:SharpPcap.Pcap.PcapStatisticsEvent">
+            <summary>
+            A delegate for delivering network statistics
+            </summary>
+        </member>
+        <member name="T:SharpPcap.Pcap.PcapCaptureStoppedEvent">
+            <summary>
+            A delegate for notifying of a capture stopped event
+            </summary>
+        </member>
+        <!-- 对于成员“T:SharpPcap.Packets.PacketEncoding”忽略有格式错误的 XML 注释 -->
+        <member name="M:SharpPcap.Packets.PacketEncoding.extractHeader(System.Int32,System.Int32,System.Byte[])">
+            <summary> Extract a header from a packet.
+            
+            </summary>
+            <param name="offset">the offset in bytes to the start of the embedded header.
+            </param>
+            <param name="headerLen">the length of the header embedded in the packet.
+            </param>
+            <param name="bytes">the packet data, including the embedded header and data.
+            </param>
+            <returns> the extracted header data.
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Packets.PacketEncoding.extractData(System.Int32,System.Int32,System.Byte[])">
+            <summary> Extract data from a packet.
+            
+            </summary>
+            <param name="offset">the offset in bytes to the start of the embedded header.
+            </param>
+            <param name="headerLen">the length of the header embedded in the packet.
+            </param>
+            <param name="bytes">the packet data, including the embedded header and data.
+            </param>
+            <returns> the extracted packet data.
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Packets.PacketEncoding.extractData(System.Int32,System.Int32,System.Byte[],System.Int32)">
+            <summary> Extract data from a packet.
+            
+            </summary>
+            <param name="offset">the offset in bytes to the start of the embedded header.
+            </param>
+            <param name="headerLen">the length of the header embedded in the packet.
+            </param>
+            <param name="bytes">the packet data, including the embedded header and data.
+            </param>
+            <returns> the extracted packet data.
+            </returns>
+        </member>
+        <member name="T:SharpPcap.Packets.IPv6Packet">
+            <summary>
+            This is a implementation of the IPv6 Layer as an object for use with the SharpPcap library.
+            
+            References
+            ----------
+            http://tools.ietf.org/html/rfc2460
+            http://en.wikipedia.org/wiki/IPv6
+            </summary>
+        </member>
+        <!-- 对于成员“T:SharpPcap.Packets.EthernetPacket”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“T:SharpPcap.Packets.Packet”忽略有格式错误的 XML 注释 -->
+        <member name="P:SharpPcap.Packets.Packet.Header">
+            <summary> Fetch data portion of the packet.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.Packet.Data">
+            <summary> Fetch data portion of the packet.</summary>
+        </member>
+        <!-- 对于成员“M:SharpPcap.Packets.EthernetPacket.extractProtocol(System.Byte[])”忽略有格式错误的 XML 注释 -->
+        <member name="M:SharpPcap.Packets.EthernetPacket.OnOffsetChanged">
+            <summary>
+             should be overriden by upper classes
+            </summary>
+        </member>
+        <!-- 对于成员“M:SharpPcap.Packets.EthernetPacket.#ctor(System.Int32,System.Byte[])”忽略有格式错误的 XML 注释 -->
+        <member name="M:SharpPcap.Packets.EthernetPacket.#ctor(System.Int32,System.Byte[],SharpPcap.Packets.Util.Timeval)">
+            <summary> Construct a new ethernet packet, including the capture time.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.EthernetPacket.ToString">
+            <summary> Convert this ethernet packet to a readable string.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.EthernetPacket.ToColoredString(System.Boolean)">
+            <summary> Generate string with contents describing this ethernet packet.</summary>
+            <param name="colored">whether or not the string should contain ansi
+            color escape sequences.
+            </param>
+        </member>
+        <member name="M:SharpPcap.Packets.EthernetPacket.ToColoredVerboseString(System.Boolean)">
+            <summary> Convert this IP packet to a more verbose string.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.EthernetPacket.EthernetHeaderLength">
+            <summary> Fetch the ethernet header length in bytes.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.EthernetPacket.HeaderLength">
+            <summary> Fetch the packet ethernet header length.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.EthernetPacket.EthernetHeader">
+            <summary> Fetch the ethernet header as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.EthernetPacket.Header">
+            <summary> Fetch the ethernet header as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.EthernetPacket.EthernetData">
+            <summary> Fetch the ethernet data as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.EthernetPacket.EthernetProtocol">
+            <summary> Fetch the ethernet protocol.</summary>
+            <summary> Sets the ethernet protocol.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.EthernetPacket.Timeval">
+            <summary> Fetch the timeval containing the time the packet arrived on the 
+            device where it was captured.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.EthernetPacket.Color">
+            <summary> Fetch ascii escape sequence of the color associated with this packet type.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.EthernetPacket.Data">
+            <summary> Fetch the ethernet data as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.EthernetPacket.SourceHwAddress">
+            <summary> Fetch the MAC address of the host where the packet originated from.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.EthernetPacket.DestinationHwAddress">
+            <summary> Fetch the MAC address of the host where the packet originated from.</summary>
+        </member>
+        <!-- 对于成员“T:SharpPcap.Packets.EthernetPacket.EtherType”忽略有格式错误的 XML 注释 -->
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.IP">
+            <summary> IP protocol.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.ARP">
+            <summary> Address resolution protocol.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.RARP">
+            <summary> Reverse address resolution protocol.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.LOOP">
+            <summary> Ethernet Loopback packet </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.ECHO">
+            <summary> Ethernet Echo packet      </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.PUP">
+            <summary> Xerox PUP packet</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.X25">
+            <summary> CCITT X.25            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.BPQ">
+            <summary> G8BPQ AX.25 Ethernet Packet   [ NOT AN OFFICIALLY REGISTERED ID ] </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.DEC">
+            <summary> DEC Assigned proto</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.DNA_DL">
+            <summary> DEC DNA Dump/Load</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.DNA_RC">
+            <summary> DEC DNA Remote Console</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.DNA_RT">
+            <summary> DEC DNA Routing</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.LAT">
+            <summary> DEC LAT</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.DIAG">
+            <summary> DEC Diagnostics</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.CUST">
+            <summary> DEC Customer use</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.SCA">
+            <summary> DEC Systems Comms Arch</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.ATALK">
+            <summary> Appletalk DDP </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.AARP">
+            <summary> Appletalk AARP</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.IPX">
+            <summary> IPX over DIX</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.IPV6">
+            <summary> IPv6 over bluebook</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.N802_3">
+            <summary> Dummy type for 802.3 frames  </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.AX25">
+            <summary> Dummy protocol id for AX.25  </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.ALL">
+            <summary> Every packet.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.N802_2">
+            <summary> 802.2 frames</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.SNAP">
+            <summary> Internal only</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.DDCMP">
+            <summary> DEC DDCMP: Internal only</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.WAN_PPP">
+            <summary> Dummy type for WAN PPP frames</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.PPP_MP">
+            <summary> Dummy type for PPP MP frames </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.LOCALTALK">
+            <summary> Localtalk pseudo type </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.PPPTALK">
+            <summary> Dummy type for Atalk over PPP</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.TR_802_2">
+            <summary> 802.2 frames</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.MOBITEX">
+            <summary> Mobitex (kaz@cafe.net)</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.CONTROL">
+            <summary> Card specific control frames</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.IRDA">
+            <summary> Linux/IR</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetPacket.EtherType.MASK">
+            <summary> Ethernet protocol mask.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPv6Packet.#ctor(System.Int32,System.Byte[])">
+            <summary>
+            Constructor with a byte array and the size of the link layer.
+            </summary>
+            <param name="lLen">The link layer size</param>
+            <param name="bytes">A byte array.</param>
+        </member>
+        <member name="M:SharpPcap.Packets.IPv6Packet.#ctor(System.Int32,System.Byte[],SharpPcap.Packets.Util.Timeval)">
+            <summary>
+            Constructor with a byte array, a time value, and the size of the link layer.
+            </summary>
+            <param name="lLen">The link layer size.</param>
+            <param name="bytes">A byte array.</param>
+            <param name="tv">A time value.</param>
+        </member>
+        <member name="M:SharpPcap.Packets.IPv6Packet.OnOffsetChanged">
+            <summary>
+            TODO No Idea what this is for.
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv6Packet._ipv6Offset">
+            <summary>
+            The start of the ipv6 packet.
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPv6Packet.ToString">
+            <summary>
+            Converts the packet to a string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SharpPcap.Packets.IPv6Packet.ToColoredString(System.Boolean)">
+            <summary> Generate string with contents describing this IP packet.</summary>
+            <param name="colored">whether or not the string should contain ansi
+            color escape sequences.
+            </param>
+        </member>
+        <member name="M:SharpPcap.Packets.IPv6Packet.ToColoredVerboseString(System.Boolean)">
+            <summary> Convert this IP packet to a more verbose string.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv6Packet.IPv6Version">
+            <summary>
+            The version field of the IPv6 Packet.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv6Packet.Version">
+            <summary>
+            The version field of the IPv6 Packet. Delgates to IPv6Version so maybe overridden.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv6Packet.TrafficClass">
+            <summary>
+            The traffic class field of the IPv6 Packet.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv6Packet.FlowLabel">
+            <summary>
+            The flow label field of the IPv6 Packet.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv6Packet.IPPayloadLength">
+            <summary>
+            The payload lengeth field of the IPv6 Packet
+            NOTE: Differs from the IPv4 'Total length' field that includes the length of the header as
+                  payload length is ONLY the size of the payload.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv6Packet.NextHeader">
+            <summary>
+            The next header field of the IPv6 Packet.
+            
+            Replaces IPv4's 'protocol' field, has compatible values
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv6Packet.HopLimit">
+            <summary>
+            The hop limit field of the IPv6 Packet.
+            NOTE: Replaces the 'time to live' field of IPv4
+            
+            8-bit value
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv6Packet.SourceAddress">
+            <summary>
+            The source address field of the IPv6 Packet.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv6Packet.DestinationAddress">
+            <summary>
+            The destination address field of the IPv6 Packet.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv6Packet.IPv6Header">
+            <summary>
+            Returns the bytes of the IPv6 Header.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv6Packet.Header">
+            <summary>
+            Returns the bytes of the IPv6 Header.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv6Packet.IPData">
+            <summary>
+            Returns the IP data.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv6Packet.Data">
+            <summary>
+            Returns the IP data.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv6Packet.Color">
+            <summary>
+            Converts the packet to a color string. TODO add a method for colored to string.
+            </summary>
+        </member>
+        <member name="T:SharpPcap.Util.NumberRange">
+            <summary>
+            NumberRange
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Util.NumberRange.Min">
+            <summary> Sets the minimum value of this Range. This also sets the current value to the minimum.</summary>
+            <param name="min">the minimum value
+            </param>
+        </member>
+        <member name="M:SharpPcap.Util.Int64Range.#ctor(System.Int64,System.Int64)">
+            <param name="min">
+            </param>
+            <param name="max">
+            </param>
+            <throws>  NoSuchAlgorithmException </throws>
+        </member>
+        <member name="M:SharpPcap.Util.Int64Range.#ctor(System.Int64,System.Int64,System.Boolean)">
+            <param name="min">
+            </param>
+            <param name="max">
+            </param>
+            <param name="isRandom">
+            </param>
+            <throws>  NoSuchAlgorithmException </throws>
+        </member>
+        <member name="T:SharpPcap.Util.Convert">
+            <summary>
+            Summary description for Convert.
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Util.Convert.MaskStringToBits(System.String)">
+            <summary>
+            Converts a network mask string represntation into an integer representing the number of network bits
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Util.Convert.Time_T2DateTime(System.UInt32)">
+            <summary>
+            Converts a time_t to DateTime
+            </summary>
+        </member>
+        <member name="T:SharpPcap.Packets.PacketFactory">
+            <summary> This factory constructs high-level packet objects from
+            captured data streams.
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.PacketFactory.dataToPacket(System.Int32,System.Byte[])">
+            <summary> Convert captured packet data into an object.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.PacketFactory.dataToPacket(System.Int32,System.Byte[],SharpPcap.Packets.Util.Timeval)">
+            <summary> Convert captured packet data into an object.</summary>
+        </member>
+        <!-- 对于成员“T:SharpPcap.Packets.IPPacket”忽略有格式错误的 XML 注释 -->
+        <member name="M:SharpPcap.Packets.IPPacket.#ctor(System.Int32,System.Byte[],SharpPcap.Packets.IPPacket.IPVersions)">
+            <summary> Create a new IP packet. </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPPacket.#ctor(System.Int32,System.Byte[])">
+            <summary> Create a new IP packet. </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPPacket.#ctor(System.Int32,System.Byte[],SharpPcap.Packets.Util.Timeval)">
+            <summary> Create a new IP packet.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPPacket.#ctor(System.Int32,System.Byte[],SharpPcap.Packets.Util.Timeval,SharpPcap.Packets.IPPacket.IPVersions)">
+            <summary> Create a new IP packet.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPPacket.OnOffsetChanged">
+            <summary>
+             should be overriden by upper classes
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPPacket.ToString">
+            <summary> Convert this IP packet to a readable string.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPPacket.ToColoredString(System.Boolean)">
+            <summary> Generate string with contents describing this IP packet.</summary>
+            <param name="colored">whether or not the string should contain ansi
+            color escape sequences.
+            </param>
+        </member>
+        <member name="M:SharpPcap.Packets.IPPacket.ToColoredVerboseString(System.Boolean)">
+            <summary> Convert this IP packet to a more verbose string.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPPacket.GetTransportLayerChecksum(System.Int32)">
+            <summary> Fetch the header checksum.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPPacket.SetChecksum(System.Int32,System.Int32)">
+            <summary> Sets the IP header checksum.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPPacket.ComputeIPChecksum">
+            <summary> Same as <code>computeIPChecksum(true);</code>
+            
+            </summary>
+            <returns> The computed IP checksum value.
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Packets.IPPacket.ComputeIPChecksum(System.Boolean)">
+            <summary> Computes the IP checksum, optionally updating the IP checksum header.
+            
+            </summary>
+            <param name="update">Specifies whether or not to update the IP checksum
+            header after computing the checksum.  A value of true indicates
+            the header should be updated, a value of false indicates it
+            should not be updated.
+            </param>
+            <returns> The computed IP checksum.
+            </returns>
+        </member>
+        <member name="P:SharpPcap.Packets.IPPacket.IPVersion">
+            <summary> Get the IP version code.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPPacket.Color">
+            <summary> Fetch ascii escape sequence of the color associated with this packet type.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPPacket.IPPayloadLength">
+            <summary> Returns the payload length of the packet</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPPacket.SourceAddress">
+            <summary> Fetch the IP address of the host where the packet originated from.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPPacket.DestinationAddress">
+            <summary> Fetch the IP address of the host where the packet is destined.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPPacket.IPData">
+            <summary>
+            Returns the IP data.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPPacket.ValidChecksum">
+            <summary> Check if the IP packet is valid, checksum-wise.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPPacket.ValidIPChecksum">
+            <summary> Check if the IP packet is valid, checksum-wise.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPPacket.IPHeader">
+            <summary> Fetch the header a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPPacket.Header">
+            <summary> Fetch the UDP header as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPPacket.IPHeaderLength">
+            <summary> Fetch the IP header length in bytes. </summary>
+            <summary> Sets the IP header length field.  At most, this can be a 
+            four-bit value.  The high order bits beyond the fourth bit
+            will be ignored.
+            
+            </summary>
+            <param name="length">The length of the IP header in 32-bit words.
+            </param>
+        </member>
+        <member name="P:SharpPcap.Packets.IPPacket.HeaderLength">
+            <summary> Fetches the packet header length.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPPacket.IPTotalLength">
+            <summary> Fetch the IP length in bytes.</summary>
+        </member>
+        <member name="T:SharpPcap.Packets.IPPacket.IPVersions">
+            <summary> Code constants for internet protocol versions.
+            
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPPacket.IPVersions.IPv4">
+            <summary> Internet protocol version 4.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPPacket.IPVersions.IPv6">
+            <summary> Internet protocol version 6.</summary>
+        </member>
+        <member name="T:SharpPcap.PcapDevice">
+            <summary>
+            Capture live packets from a network device
+            </summary>
+        </member>
+        <member name="F:SharpPcap.PcapDevice.disableBlocking">
+            <summary>
+            Set/Get Non-Blocking Mode. returns allways false for savefiles.
+            </summary>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.StartCapture">
+            <summary>
+            Starts the capturing process
+            </summary>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.StopCapture">
+             <summary>
+             Stops the capture process
+            
+             Throws an exception if the stop capture timeout is exceeded and the
+             capture thread was aborted
+             </summary>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.Capture(System.Int32)">
+            <summary>
+            Captures packets on this network device. This method will block
+            until capturing is finished.
+            </summary>
+            <param name="packetCount">The number of packets to be captured. 
+            Value of '-1' means infinite.</param>
+        </member>
+        <!-- 对于成员“M:SharpPcap.PcapDevice.#ctor(SharpPcap.Containers.PcapInterface)”忽略有格式错误的 XML 注释 -->
+        <member name="M:SharpPcap.PcapDevice.#ctor">
+            <summary>
+            Default contructor for subclasses
+            </summary>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.Finalize">
+            <summary>
+            PcapDevice finalizer.  Ensure PcapDevices are stopped and closed before exit.
+            </summary>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.Open">
+            <summary>
+            Open the device with default values of: promiscuous_mode=false, read_timeout=1000
+            To start capturing call the 'PcapStartCapture' function
+            </summary>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.Open(System.Boolean)">
+            <summary>
+            Open the device. To start capturing call the 'PcapStartCapture' function
+            </summary>
+            <param name="promiscuous_mode">A value indicating wether to open the
+             device in promiscuous mode (true = capture *all* packets on the network,
+             including packets not for me)</param>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.Open(System.Boolean,System.Int32)">
+            <summary>
+            Open the device. To start capturing call the 'PcapStartCapture' function
+            </summary>
+            <param name="promiscuous_mode">A value indicating wether to open the
+             device in promiscuous mode (true = capture *all* packets on the network,
+             including packets not for me)</param>
+            <param name="read_timeout">The timeout in miliseconds to wait for a  packet arrival.</param>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.Close">
+            <summary>
+            Closes this adapter
+            </summary>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.GetNextPacket">
+            <summary>
+            Gets the next packet captured on this device
+            </summary>
+            <returns>The next packet captured on this device</returns>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.GetNextPacket(SharpPcap.Packets.Packet@)">
+            <summary>
+            Gets the next packet captured on this device
+            </summary>
+            <param name="p">A packet reference</param>
+            <returns>A reference to a packet object</returns>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.PacketHandler(System.IntPtr,System.IntPtr,System.IntPtr)">
+            <summary>
+            Pcap_loop callback method.
+            </summary>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.CompileFilter(System.IntPtr,System.String,System.UInt32,System.IntPtr@,System.String@)">
+            or unmanaged memory will be leaked
+        </member>
+        <member name="M:SharpPcap.PcapDevice.FreeBpfProgram(System.IntPtr)">
+            <summary>
+            Free memory allocated in CompileFilter()
+            </summary>
+            <param name="bpfProgram">
+            A <see cref="T:System.IntPtr"/>
+            </param>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.CheckFilter(System.String,System.String@)">
+            <summary>
+            Returns true if the filter expression was able to be compiled into a
+            program without errors
+            </summary>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.SetFilter(System.String)">
+            <summary>
+            Compile a kernel level filtering expression, and associate the filter 
+            with this device. For more info on filter expression syntax, see:
+            http://www.winpcap.org/docs/docs31/html/group__language.html
+            </summary>
+            <param name="filterExpression">The filter expression to compile</param>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.DumpOpen(System.String)">
+            <summary>
+            Opens a file for packet writings
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.DumpClose">
+            <summary>
+            Closes the opened dump file
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.DumpFlush">
+            <summary>
+            Flushes all write buffers of the opened dump file
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.Dump(System.Byte[],SharpPcap.PcapHeader)">
+            <summary>
+            Writes a packet to the pcap dump file associated with this device.
+            </summary>
+            <param name="p">The packet to write</param>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.Dump(System.Byte[])">
+            <summary>
+            Writes a packet to the pcap dump file associated with this device.
+            </summary>
+            <param name="p">The packet to write</param>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.Dump(SharpPcap.Packets.Packet)">
+            <summary>
+            Writes a packet to the pcap dump file associated with this device.
+            </summary>
+            <param name="p">The packet to write</param>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.SendPacket(SharpPcap.Packets.Packet)">
+            <summary>
+            Sends a raw packet throgh this device
+            </summary>
+            <param name="p">The packet to send</param>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.SendPacket(SharpPcap.Packets.Packet,System.Int32)">
+            <summary>
+            Sends a raw packet throgh this device
+            </summary>
+            <param name="p">The packet to send</param>
+            <param name="size">The number of bytes to send</param>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.SendPacket(System.Byte[])">
+            <summary>
+            Sends a raw packet throgh this device
+            </summary>
+            <param name="p">The packet bytes to send</param>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.SendPacket(System.Byte[],System.Int32)">
+            <summary>
+            Sends a raw packet throgh this device
+            </summary>
+            <param name="p">The packet bytes to send</param>
+            <param name="size">The number of bytes to send</param>
+        </member>
+        <member name="M:SharpPcap.PcapDevice.SendQueue(SharpPcap.PcapSendQueue,System.Boolean)">
+            <summary>
+            Sends all packets in a 'PcapSendQueue' out this pcap device
+            </summary>
+            <param name="q">The 'PcapSendQueue' hodling the packets</param>
+        </member>
+        <member name="P:SharpPcap.PcapDevice.Started">
+            <summary>
+            Return a value indicating if the capturing process of this adapter is started
+            </summary>
+        </member>
+        <!-- 对于成员“E:SharpPcap.PcapDevice.OnPacketArrival”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“E:SharpPcap.PcapDevice.OnPcapStatistics”忽略有格式错误的 XML 注释 -->
+        <member name="E:SharpPcap.PcapDevice.OnCaptureStopped">
+            <summary>
+            Fired when the capture process of this pcap device is stopped
+            </summary>
+        </member>
+        <member name="P:SharpPcap.PcapDevice.Name">
+            <summary>
+            Gets the pcap name of this network device
+            </summary>
+        </member>
+        <member name="P:SharpPcap.PcapDevice.Description">
+            <summary>
+            Gets the pcap description of this device
+            </summary>
+        </member>
+        <member name="P:SharpPcap.PcapDevice.PcapHandle">
+            <summary>
+            The underlying pcap device handle
+            </summary>
+        </member>
+        <member name="P:SharpPcap.PcapDevice.PcapDataLink">
+            <summary>
+            Return the pcap link layer value of an adapter. 
+            </summary>
+        </member>
+        <member name="P:SharpPcap.PcapDevice.Opened">
+            <summary>
+            Return a value indicating if this adapter is opened
+            </summary>
+        </member>
+        <member name="P:SharpPcap.PcapDevice.DumpOpened">
+            <summary>
+            Gets a value indicating wether pcap dump file is already associated with this device
+            </summary>
+        </member>
+        <member name="P:SharpPcap.PcapDevice.LastError">
+            <summary>
+            The last pcap error associated with this pcap device
+            </summary>
+        </member>
+        <member name="T:SharpPcap.PcapDevice.PcapMode">
+            <summary>
+            The working mode of a Pcap device
+            </summary>
+        </member>
+        <member name="F:SharpPcap.PcapDevice.PcapMode.Capture">
+            <summary>
+            Set a Pcap device to Capture mode (MODE_CAPT)
+            </summary>
+        </member>
+        <member name="F:SharpPcap.PcapDevice.PcapMode.Statistics">
+            <summary>
+            Set a Pcap device to Statistics mode (MODE_STAT)
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Util.Rand.GetSeed(System.Int32)">
+            <summary>
+            Returns the given number of seed bytes generated for the first running of a new instance 
+            of the random number generator.
+            </summary>
+            <param name="numberOfBytes">Number of seed bytes to generate.</param>
+            <returns>Seed bytes generated</returns>
+        </member>
+        <!-- 对于成员“T:SharpPcap.Packets.Util.Timeval”忽略有格式错误的 XML 注释 -->
+        <member name="P:SharpPcap.Packets.Util.Timeval.Date">
+            <summary> Convert this timeval to a DateTime</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPProtocol.IPProtocolType.HTTP">
+            <summary> HTTP Packet </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPProtocol.IPProtocolType.INVALID">
+            <summary> Unrecognized TCP protocol.
+            WARNING: this only works because the int storage for the protocol
+            code has more bits than the field in the IP header where it is stored.
+            </summary>
+        </member>
+        <!-- 对于成员“T:SharpPcap.Packets.LinkLayers_Fields”忽略有格式错误的 XML 注释 -->
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.NULL">
+            <summary> no link-layer encapsulation </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.EN10MB">
+            <summary> Ethernet (10Mb) </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.EN3MB">
+            <summary> Experimental Ethernet (3Mb) </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.AX25">
+            <summary> Amateur Radio AX.25 </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.PRONET">
+            <summary> Proteon ProNET Token Ring </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.CHAOS">
+            <summary> Chaos </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.IEEE802">
+            <summary> IEEE 802 Networks </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.ARCNET">
+            <summary> ARCNET </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.SLIP">
+            <summary> Serial Line IP </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.PPP">
+            <summary> Point-to-point Protocol </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.FDDI">
+            <summary> FDDI </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.ATM_RFC1483">
+            <summary> LLC/SNAP encapsulated atm </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.RAW">
+            <summary> raw IP </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.SLIP_BSDOS">
+            <summary> BSD Slip.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.PPP_BSDOS">
+            <summary> BSD PPP.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.ATM_CLIP">
+            <summary> IP over ATM.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.PPP_SERIAL">
+            <summary> PPP over HDLC.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.CHDLC">
+            <summary> Cisco HDLC.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.IEEE802_11">
+            <summary> IEEE 802.11 wireless.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.LOOP">
+            <summary> OpenBSD loopback.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.LINUX_SLL">
+            <summary> Linux cooked sockets.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayers_Fields.UNKNOWN">
+            <summary> unknown link-layer type</summary>
+        </member>
+        <member name="T:SharpPcap.Packets.LinkLayer">
+            <summary> Information about network link layers.
+            
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.LinkLayer.getLinkLayerLength(System.Int32)">
+            <summary> Fetch the header length associated with various link-layer types.</summary>
+            <param name="layerType">the link-layer code
+            </param>
+            <returns> the length of the header for the specified link-layer
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Packets.LinkLayer.getProtoOffset(System.Int32)">
+            <summary> Fetch the offset into the link-layer header where the protocol code
+            can be found. Returns -1 if there is no embedded protocol code.
+            </summary>
+            <param name="layerType">the link-layer code
+            </param>
+            <returns> the offset in bytes
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Packets.LinkLayer.getDescription(System.Int32)">
+            <summary> Fetch a link-layer type description.</summary>
+            <param name="code">the code associated with the description.
+            </param>
+            <returns> a description of the link-layer type.
+            </returns>
+        </member>
+        <member name="F:SharpPcap.Packets.LinkLayer.descriptions">
+            <summary> 'Human-readable' link-layer type descriptions.</summary>
+        </member>
+        <member name="T:SharpPcap.Packets.IPPorts">
+            <summary> Code constants for ip ports.
+            
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPPorts.LIMIT_PRIVILEGED">
+            <summary> Number of well-known (aka privileged) ports.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPPorts.MASK">
+            <summary> IP port mask.</summary>
+        </member>
+        <member name="T:SharpPcap.PcapDeviceList">
+            <summary>
+            List of available Pcap Interfaces.
+            </summary>
+        </member>
+        <member name="M:SharpPcap.PcapDeviceList.#ctor">
+            <summary>
+            Represents a strongly typed, read-only list of PcapDevices.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.PcapDeviceList.Item(System.String)">
+            <param name="Name">The name or description of the pcap interface to get.</param>
+        </member>
+        <member name="T:SharpPcap.PcapHeader">
+            <summary>
+             A wrapper class for libpcap's pcap_pkthdr structure
+            </summary>
+        </member>
+        <member name="M:SharpPcap.PcapHeader.#ctor">
+            <summary>
+            Constructs a new PcapHeader
+            </summary>
+        </member>
+        <member name="M:SharpPcap.PcapHeader.#ctor(System.UInt64,System.UInt64,System.UInt32,System.UInt32)">
+            <summary>
+            Constructs a new PcapHeader
+            </summary>
+            <param name="seconds">The seconds value of the packet's timestamp</param>
+            <param name="microseconds">The microseconds value of the packet's timestamp</param>
+            <param name="packetLength">The actual length of the packet</param>
+            <param name="captureLength">The length of the capture</param>
+        </member>
+        <member name="F:SharpPcap.PcapHeader._seconds">
+            <summary>
+            The seconds value of the packet's timestamp
+            </summary>
+        </member>
+        <member name="F:SharpPcap.PcapHeader._usec">
+            <summary>
+            The microseconds value of the packet's timestamp
+            </summary>
+        </member>
+        <member name="F:SharpPcap.PcapHeader._packetlength">
+            <summary>
+            The actual length of the packet
+            </summary>
+        </member>
+        <member name="F:SharpPcap.PcapHeader._capturelength">
+            <summary>
+            The length of the capture
+            </summary>
+        </member>
+        <member name="M:SharpPcap.PcapHeader.MarshalToIntPtr">
+             <summary>
+             Marshal this structure into the platform dependent version and return
+             and IntPtr to that memory
+            
+             NOTE: IntPtr MUST BE FREED via Marshal.FreeHGlobal()
+             </summary>
+             <returns>
+             A <see cref="T:System.IntPtr"/>
+             </returns>
+        </member>
+        <member name="P:SharpPcap.PcapHeader.Date">
+            <summary>
+            Return the DateTime value of this pcap header
+            </summary>
+        </member>
+        <member name="T:SharpPcap.Packets.ICMPMessage">
+            <summary> ICMP message utility class.
+            
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.ICMPMessage.getDescription(System.Int32)">
+            <summary> Fetch an ICMP message.</summary>
+            <param name="code">the code associated with the message.
+            </param>
+            <returns> a message describing the significance of the ICMP code.
+            </returns>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessage.messages">
+            <summary> 'Human-readable' ICMP messages.</summary>
+        </member>
+        <member name="T:SharpPcap.Packets.ICMPFields_Fields">
+            <summary> ICMP protocol field encoding information.
+            
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPFields_Fields.ICMP_CODE_LEN">
+            <summary> Length of the ICMP message type code in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPFields_Fields.ICMP_SUBC_LEN">
+            <summary> Length of the ICMP subcode in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPFields_Fields.ICMP_CSUM_LEN">
+            <summary> Length of the ICMP header checksum in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPFields_Fields.ICMP_CODE_POS">
+            <summary> Position of the ICMP message type.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPFields_Fields.ICMP_SUBC_POS">
+            <summary> Position of the ICMP message subcode.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPFields_Fields.ICMP_CSUM_POS">
+            <summary> Position of the ICMP header checksum.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPFields_Fields.ICMP_HEADER_LEN">
+            <summary> Length in bytes of an ICMP header.</summary>
+        </member>
+        <!-- 对于成员“T:SharpPcap.Packets.Util.AnsiEscapeSequences_Fields”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“T:SharpPcap.Packets.ICMPPacket”忽略有格式错误的 XML 注释 -->
+        <member name="M:SharpPcap.Packets.ICMPPacket.ComputeICMPChecksum(System.Boolean)">
+            <summary> Computes the ICMP checksum, optionally updating the ICMP checksum header.
+            
+            </summary>
+            <param name="update">Specifies whether or not to update the ICMP checksum
+            header after computing the checksum.  A value of true indicates
+            the header should be updated, a value of false indicates it
+            should not be updated.
+            </param>
+            <returns> The computed ICMP checksum.
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Packets.ICMPPacket.ComputeICMPChecksum">
+            <summary> Same as <code>computeICMPChecksum(true);</code>
+            
+            </summary>
+            <returns> The computed ICMP checksum value.
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Packets.ICMPPacket.ToString">
+            <summary> Convert this ICMP packet to a readable string.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.ICMPPacket.ToColoredString(System.Boolean)">
+            <summary> Generate string with contents describing this ICMP packet.</summary>
+            <param name="colored">whether or not the string should contain ansi
+            color escape sequences.
+            </param>
+        </member>
+        <member name="P:SharpPcap.Packets.ICMPPacket.ICMPHeader">
+            <summary> Fetch the ICMP header a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ICMPPacket.Header">
+            <summary> Fetch the ICMP header as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ICMPPacket.ICMPData">
+            <summary> Fetch the ICMP data as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ICMPPacket.MessageMajorCode">
+            <summary> Fetch the ICMP message type code. Formerly .getMessageType().</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ICMPPacket.MessageType">
+            <deprecated> use getMessageMajorCode().
+            </deprecated>
+        </member>
+        <member name="P:SharpPcap.Packets.ICMPPacket.MessageCode">
+            <summary> Fetch the ICMP message type, including subcode. Return value can be 
+            used with ICMPMessage.getDescription().
+            </summary>
+            <returns> a 2-byte value containing the message type in the high byte
+            and the message type subcode in the low byte.
+            </returns>
+        </member>
+        <member name="P:SharpPcap.Packets.ICMPPacket.MessageMinorCode">
+            <summary> Fetch the ICMP message subcode.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ICMPPacket.ICMPChecksum">
+            <summary> Fetch the ICMP header checksum.</summary>
+            <summary> Sets the ICMP header checksum.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ICMPPacket.Color">
+            <summary> Fetch ascii escape sequence of the color associated with this packet type.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ICMPPacket.Data">
+            <summary> Fetch the ICMP data as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ICMPPacket.Checksum">
+            <summary> Fetch the ICMP header checksum.</summary>
+        </member>
+        <member name="M:SharpPcap.Util.IPUtil.ExtractIp(System.String)">
+            <param name="ipAndMaskBits">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Util.IPUtil.ExtractMaskBits(System.String)">
+            <param name="ipAndMaskBits">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Util.IPUtil.ApplyMask(System.String,System.Int32)">
+            <param name="dottedIP">
+            </param>
+            <param name="maskLength">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Util.IPUtil.IpToLong(System.String)">
+            <param name="dottedIP">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Util.IPUtil.IpToString(System.Int64)">
+            <param name="ip">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Util.IPUtil.MaskToString(System.Int32)">
+            <param name="numBits">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="T:SharpPcap.Packets.IGMPFields_Fields">
+            <summary> IGMP protocol field encoding information.
+            
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IGMPFields_Fields.IGMP_CODE_LEN">
+            <summary> Length of the IGMP message type code in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IGMPFields_Fields.IGMP_MRSP_LEN">
+            <summary> Length of the IGMP max response code in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IGMPFields_Fields.IGMP_CSUM_LEN">
+            <summary> Length of the IGMP header checksum in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IGMPFields_Fields.IGMP_GADDR_LEN">
+            <summary> Length of group address in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IGMPFields_Fields.IGMP_CODE_POS">
+            <summary> Position of the IGMP message type.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IGMPFields_Fields.IGMP_MRSP_POS">
+            <summary> Position of the IGMP max response code.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IGMPFields_Fields.IGMP_CSUM_POS">
+            <summary> Position of the IGMP header checksum.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IGMPFields_Fields.IGMP_GADDR_POS">
+            <summary> Position of the IGMP group address.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IGMPFields_Fields.IGMP_HEADER_LEN">
+            <summary> Length in bytes of an IGMP header.</summary>
+        </member>
+        <member name="T:SharpPcap.Packets.IPv4Fields_Fields">
+            <summary> IP protocol field encoding information.
+            
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_VER_LEN">
+            <summary> Width of the IP version and header length field in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_TOS_LEN">
+            <summary> Width of the TOS field in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_LEN_LEN">
+            <summary> Width of the header length field in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_ID_LEN">
+            <summary> Width of the ID field in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_FRAG_LEN">
+            <summary> Width of the fragmentation bits and offset field in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_TTL_LEN">
+            <summary> Width of the TTL field in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_CODE_LEN">
+            <summary> Width of the IP protocol code in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_CSUM_LEN">
+            <summary> Width of the IP checksum in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_VER_POS">
+            <summary> Position of the version code and header length within the IP header.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_TOS_POS">
+            <summary> Position of the type of service code within the IP header.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_LEN_POS">
+            <summary> Position of the length within the IP header.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_ID_POS">
+            <summary> Position of the packet ID within the IP header.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_FRAG_POS">
+            <summary> Position of the flag bits and fragment offset within the IP header.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_TTL_POS">
+            <summary> Position of the ttl within the IP header.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_CODE_POS">
+            <summary> Position of the IP protocol code within the IP header.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_CSUM_POS">
+            <summary> Position of the checksum within the IP header.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_SRC_POS">
+            <summary> Position of the source IP address within the IP header.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_DST_POS">
+            <summary> Position of the destination IP address within a packet.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPv4Fields_Fields.IP_HEADER_LEN">
+            <summary> Length in bytes of an IP header, excluding options.</summary>
+        </member>
+        <!-- 对于成员“T:SharpPcap.Packets.IGMPPacket”忽略有格式错误的 XML 注释 -->
+        <member name="M:SharpPcap.Packets.IGMPPacket.ToString">
+            <summary> Convert this IGMP packet to a readable string.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IGMPPacket.ToColoredString(System.Boolean)">
+            <summary> Generate string with contents describing this IGMP packet.</summary>
+            <param name="colored">whether or not the string should contain ansi
+            color escape sequences.
+            </param>
+        </member>
+        <member name="P:SharpPcap.Packets.IGMPPacket.IGMPHeader">
+            <summary> Fetch the IGMP header a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IGMPPacket.Header">
+            <summary> Fetch the IGMP header as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IGMPPacket.IGMPData">
+            <summary> Fetch the IGMP data as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IGMPPacket.MessageType">
+            <summary> Fetch the IGMP message type, including subcode. Return value can be 
+            used with IGMPMessage.getDescription().
+            </summary>
+            <returns> a 2-byte value containing the message type in the high byte
+            and the message type subcode in the low byte.
+            </returns>
+        </member>
+        <member name="P:SharpPcap.Packets.IGMPPacket.MaxResponseTime">
+            <summary> Fetch the IGMP max response time.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IGMPPacket.IGMPChecksum">
+            <summary> Fetch the IGMP header checksum.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IGMPPacket.GroupAddress">
+            <summary> Fetch the IGMP group address.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IGMPPacket.Color">
+            <summary> Fetch ascii escape sequence of the color associated with this packet type.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IGMPPacket.Data">
+            <summary> Fetch the IGMP data as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IGMPPacket.Checksum">
+            <summary> Fetch the IGMP header checksum.</summary>
+        </member>
+        <member name="T:SharpPcap.SafeNativeMethods">
+            <summary>
+            Per http://msdn.microsoft.com/en-us/ms182161.aspx 
+            </summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_findalldevs_ex(System.String,System.IntPtr,System.IntPtr@,System.Text.StringBuilder)">
+            <summary>Create a list of network devices that can be opened with pcap_open().</summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_dump_open(System.IntPtr,System.String)">
+            <summary>Open a file to write packets. </summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_dump(System.IntPtr,System.IntPtr,System.IntPtr)">
+            <summary>
+             Save a packet to disk.  
+            </summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_close(System.IntPtr)">
+            <summary> close the files associated with p and deallocates resources.</summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_next_ex(System.IntPtr,System.IntPtr@,System.IntPtr@)">
+            <summary>
+            To avoid callback, this returns one packet at a time
+            </summary>
+        </member>
+        <!-- 对于成员“M:SharpPcap.SafeNativeMethods.pcap_sendpacket(System.IntPtr,System.IntPtr,System.Int32)”忽略有格式错误的 XML 注释 -->
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_sendqueue_alloc(System.Int32)">
+            <summary>
+            Allocate a send queue. 
+            </summary>
+            <param name="memsize">The size of the queue</param>
+            <returns>A pointer to the allocated buffer</returns>
+        </member>
+        <!-- 对于成员“M:SharpPcap.SafeNativeMethods.pcap_sendqueue_destroy(System.IntPtr)”忽略有格式错误的 XML 注释 -->
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_sendqueue_queue(System.IntPtr,System.IntPtr,System.IntPtr)">
+            <summary>
+            Add a packet to a send queue. 
+            </summary>
+            <param name="queue">A pointer to a queue</param>
+            <param name="header">The pcap header of the packet to send</param>
+            <param name="data">The packet data</param>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_sendqueue_transmit(System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+            Send a queue of raw packets to the network. 
+            </summary>
+            <param name="p"></param>
+            <param name="queue"></param>
+            <param name="sync">determines if the send operation must be synchronized: 
+            if it is non-zero, the packets are sent respecting the timestamps, 
+            otherwise they are sent as fast as possible</param>
+            <returns>The amount of bytes actually sent. 
+            If it is smaller than the size parameter, an error occurred 
+            during the send. The error can be caused by a driver/adapter 
+            problem or by an inconsistent/bogus send queue.</returns>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_compile(System.IntPtr,System.IntPtr,System.String,System.Int32,System.UInt32)">
+            <summary>
+            Compile a packet filter, converting an high level filtering expression (see Filtering expression syntax) in a program that can be interpreted by the kernel-level filtering engine. 
+            </summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_freecode(System.IntPtr)">
+            <summary>
+            Free up allocated memory pointed to by a bpf_program struct generated by pcap_compile()
+            </summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_geterr(System.IntPtr)">
+            <summary>
+            return the error text pertaining to the last pcap library error.
+            </summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_lib_version">
+            <summary>Returns a pointer to a string giving information about the version of the libpcap library being used; note that it contains more information than just a version number. </summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_dump_file(System.IntPtr)">
+            <summary>return the standard I/O stream of the 'savefile' opened by pcap_dump_open().</summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_dump_flush(System.IntPtr)">
+            <summary>Flushes the output buffer to the 'savefile', so that any packets 
+            written with pcap_dump() but not yet written to the 'savefile' will be written. 
+            -1 is returned on error, 0 on success. </summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_dump_close(System.IntPtr)">
+            <summary>Closes a savefile. </summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_datalink(System.IntPtr)">
+            <summary> Return the link layer of an adapter. </summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_setmode(System.IntPtr,System.Int32)">
+            <summary>
+            Set the working mode of the interface p to mode. 
+            Valid values for mode are MODE_CAPT (default capture mode) 
+            and MODE_STAT (statistical mode). See the tutorial 
+            "\ref wpcap_tut9" for details about statistical mode. 
+            </summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_setnonblock(System.IntPtr,System.Int32,System.Text.StringBuilder)">
+            <summary>
+            Set nonblocking mode. pcap_loop() and pcap_next() doesnt work in  nonblocking mode!
+            </summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_getnonblock(System.IntPtr,System.Text.StringBuilder)">
+            <summary>
+            Get nonblocking mode, returns allways 0 for savefiles.
+            </summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_dispatch(System.IntPtr,System.Int32,SharpPcap.SafeNativeMethods.pcap_handler,System.IntPtr)">
+            <summary>
+            Read packets until cnt packets are processed or an error occurs.
+            </summary>
+        </member>
+        <member name="M:SharpPcap.SafeNativeMethods.pcap_get_selectable_fd(System.IntPtr)">
+            <summary>
+            Retrieves a selectable file descriptor
+            </summary>
+            <param name="adaptHandle">
+            A <see cref="T:System.IntPtr"/>
+            </param>
+            <returns>
+            A <see cref="T:System.Int32"/>
+            </returns>
+        </member>
+        <member name="T:SharpPcap.SafeNativeMethods.pcap_handler">
+            <summary>
+            The delegate declaration for PcapHandler requires an UnmanagedFunctionPointer attribute.
+            Without this it fires for one time and then throws null pointer exception
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPv4Packet.OnOffsetChanged">
+            <summary>
+             should be overriden by upper classes
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPv4Packet.#ctor(System.Int32,System.Byte[])">
+            <summary> Create a new IP packet. </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPv4Packet.#ctor(System.Int32,System.Byte[],SharpPcap.Packets.Util.Timeval)">
+            <summary> Create a new IP packet.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPv4Packet.SetChecksum(System.Int32,System.Int32)">
+            <summary> Sets the IP header checksum.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPv4Packet.ComputeIPChecksum(System.Boolean)">
+            <summary> Computes the IP checksum, optionally updating the IP checksum header.
+            
+            </summary>
+            <param name="update">Specifies whether or not to update the IP checksum
+            header after computing the checksum.  A value of true indicates
+            the header should be updated, a value of false indicates it
+            should not be updated.
+            </param>
+            <returns> The computed IP checksum.
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Packets.IPv4Packet.ComputeIPChecksum">
+            <summary> Same as <code>computeIPChecksum(true);</code>
+            
+            </summary>
+            <returns> The computed IP checksum value.
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Packets.IPv4Packet.ToString">
+            <summary> Convert this IP packet to a readable string.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPv4Packet.ToColoredString(System.Boolean)">
+            <summary> Generate string with contents describing this IP packet.</summary>
+            <param name="colored">whether or not the string should contain ansi
+            color escape sequences.
+            </param>
+        </member>
+        <member name="M:SharpPcap.Packets.IPv4Packet.ToColoredVerboseString(System.Boolean)">
+            <summary> Convert this IP packet to a more verbose string.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.Version">
+            <summary> Get the IP version code.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.IPVersion">
+            <summary> Get the IP version code.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.IPHeaderLength">
+            <summary> Fetch the IP header length in bytes. </summary>
+            <summary> Sets the IP header length field.  At most, this can be a 
+            four-bit value.  The high order bits beyond the fourth bit
+            will be ignored.
+            
+            </summary>
+            <param name="length">The length of the IP header in 32-bit words.
+            </param>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.HeaderLength">
+            <summary> Fetch the packet IP header length.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.Id">
+            <summary> Fetch the unique ID of this IP datagram. The ID normally 
+            increments by one each time a datagram is sent by a host.
+            </summary>
+            <summary> Sets the IP identification header value.
+            
+            </summary>
+            <param name="id">A 16-bit unsigned integer.
+            </param>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.FragmentOffset">
+            <summary> Fetch fragmentation offset.</summary>
+            <summary> Sets the fragment offset header value.  The offset specifies a
+            number of octets (i.e., bytes).
+            
+            </summary>
+            <param name="offset">A 13-bit unsigned integer.
+            </param>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.SourceAddress">
+            <summary> Fetch the IP address of the host where the packet originated from.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.DestinationAddress">
+            <summary> Fetch the IP address of the host where the packet is destined.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.IPHeader">
+            <summary> Fetch the IP header a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.Header">
+            <summary> Fetch the IP header as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.IPData">
+            <summary> Fetch the IP data as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.IPChecksum">
+            <summary> Fetch the header checksum.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.ValidChecksum">
+            <summary> Check if the IP packet is valid, checksum-wise.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.ValidIPChecksum">
+            <summary> Check if the IP packet is valid, checksum-wise.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.Color">
+            <summary> Fetch ascii escape sequence of the color associated with this packet type.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.TypeOfService">
+            <summary> Fetch the type of service./// </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.Length">
+            <summary> Fetch the IP length in bytes.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.IPTotalLength">
+            <summary> Fetch the IP length in bytes.</summary>
+        </member>
+        <!-- 对于成员“P:SharpPcap.Packets.IPv4Packet.FragmentFlags”忽略有格式错误的 XML 注释 -->
+        <member name="P:SharpPcap.Packets.IPv4Packet.TimeToLive">
+            <summary> Fetch the time to live. TTL sets the upper limit on the number of 
+            routers through which this IP datagram is allowed to pass.
+            Originally intended to be the number of seconds the packet lives it is now decremented
+            by one each time a router passes the packet on
+            
+            8-bit value
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.IPProtocol">
+            <summary> Fetch the code indicating the type of protocol embedded in the IP</summary>
+            <seealso cref="!:IPProtocols.">
+            </seealso>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.Data">
+            <summary> Fetch the IP data as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.IPv4Packet.Checksum">
+            <summary> Fetch the IP header checksum.</summary>
+        </member>
+        <!-- 对于成员“T:SharpPcap.Packets.IPv4Packet.TypesOfService_Fields”忽略有格式错误的 XML 注释 -->
+        <member name="T:SharpPcap.Packets.IPv4Packet.TestProbe">
+            <summary> This inner class provides access to private methods for unit testing.</summary>
+        </member>
+        <member name="T:SharpPcap.Protocols.ARP">
+            <summary>
+            Resolves MAC addresses from IP addresses using the Address Resolution Protocol (ARP)
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Protocols.ARP.#ctor">
+            <summary>
+            Constructs a new ARP Resolver
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Protocols.ARP.#ctor(System.String)">
+            <summary>
+            Constructs a new ARP Resolver
+            </summary>
+            <param name="deviceName">The name of the network device on which this resolver sends its ARP packets</param>
+        </member>
+        <member name="M:SharpPcap.Protocols.ARP.Resolve(System.Net.IPAddress)">
+            <summary>
+            Resolves the MAC address of the specified IP address. The 'DeviceName' propery must be set
+            prior to using this method.
+            </summary>
+            <param name="destIP">The IP address to resolve</param>
+            <returns>The MAC address that matches to the given IP address</returns>
+        </member>
+        <member name="M:SharpPcap.Protocols.ARP.Resolve(System.Net.IPAddress,System.String)">
+            <summary>
+            Resolves the MAC address of the specified IP address
+            </summary>
+            <param name="destIP">The IP address to resolve</param>
+            <param name="deviceName">The local network device name on which to send the ARP request</param>
+            <returns>The MAC address that matches to the given IP address</returns>
+        </member>
+        <member name="P:SharpPcap.Protocols.ARP.LocalMAC">
+            <summary>
+            The source MAC address to be used for ARP requests.
+            If null, the local device MAC address is used
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Protocols.ARP.LocalIP">
+            <summary>
+            The source IP address to be used for ARP requests.
+            If null, the local device IP address is used
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Protocols.ARP.DeviceName">
+            <summary>
+            The default device name on which to send ARP requests
+            </summary>
+        </member>
+        <member name="T:SharpPcap.Packets.Util.HexHelper">
+            <summary> Functions for formatting and printing binary data in hexadecimal.
+            
+            </summary>
+            <author>  Patrick Charles and Jonas Lehmann
+            </author>
+            <version>  $Revision: 1.1.1.1 $
+            </version>
+            <lastModifiedBy>  $Author: tamirgal $ </lastModifiedBy>
+            <lastModifiedAt>  $Date: 2007-07-03 10:15:18 $ </lastModifiedAt>
+        </member>
+        <member name="M:SharpPcap.Packets.Util.HexHelper.toQuadString(System.Int32)">
+            <summary> Convert an int (32 bits in Java) to a decimal quad of the form
+            aaa.bbb.ccc.ddd.
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.Util.HexHelper.toString(System.Int32)">
+            <summary> Convert an int to a hexadecimal string.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.Util.HexHelper.nibbleToDigit(System.Byte)">
+            <summary> Converts the lower four bits of a byte into the ascii digit 
+            which represents its hex value. For example:
+            nibbleToDigit(10) produces 'a'.
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.Util.HexHelper.toString(System.Byte)">
+            <summary> Convert a single byte into a string representing its hex value.
+            i.e. -1 -> "ff"
+            </summary>
+            <param name="b">the byte to convert.
+            </param>
+            <returns> a string containing the hex equivalent.
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Packets.Util.HexHelper.toString(System.Byte[])">
+            <summary> Returns a text representation of a byte array.
+            
+            </summary>
+            <param name="bytes">a byte array
+            </param>
+            <returns> a string containing the hex equivalent of the bytes.
+            </returns>
+        </member>
+        <member name="T:SharpPcap.Packets.EthernetFields_Fields">
+            <summary> Ethernet protocol field encoding information.
+            
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetFields_Fields.ETH_CODE_LEN">
+            <summary> Width of the ethernet type code in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetFields_Fields.ETH_DST_POS">
+            <summary> Position of the destination MAC address within the ethernet header.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetFields_Fields.ETH_SRC_POS">
+            <summary> Position of the source MAC address within the ethernet header.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetFields_Fields.ETH_CODE_POS">
+            <summary> Position of the ethernet type field within the ethernet header.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.EthernetFields_Fields.ETH_HEADER_LEN">
+            <summary> Total length of an ethernet header in bytes.</summary>
+        </member>
+        <member name="T:SharpPcap.Packets.ARPFields_Fields">
+            <summary> IP protocol field encoding information.
+            
+            </summary>
+            FIXME: These fields are partially broken because they assume the offset for
+            several fields and the offset is actually based on the accumulated offset
+            into the structure determined by the fields that indicate sizes
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_ETH_ADDR_CODE">
+            <summary> Type code for ethernet addresses.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_IP_ADDR_CODE">
+            <summary> Type code for MAC addresses.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_OP_REQ_CODE">
+            <summary> Code for ARP request.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_OP_REP_CODE">
+            <summary> Code for ARP reply.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_OP_LEN">
+            <summary> Operation type length in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_ADDR_TYPE_LEN">
+            <summary> Address type length in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_ADDR_SIZE_LEN">
+            <summary> Address type length in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_HW_TYPE_POS">
+            <summary> Position of the hardware address type.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_PR_TYPE_POS">
+            <summary> Position of the protocol address type.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_HW_LEN_POS">
+            <summary> Position of the hardware address length.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_PR_LEN_POS">
+            <summary> Position of the protocol address length.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_OP_POS">
+            <summary> Position of the operation type.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_S_HW_ADDR_POS">
+            <summary> Position of the sender hardware address.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_S_PR_ADDR_POS">
+            <summary> Position of the sender protocol address.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_T_HW_ADDR_POS">
+            <summary> Position of the target hardware address.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_T_PR_ADDR_POS">
+            <summary> Position of the target protocol address.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ARPFields_Fields.ARP_HEADER_LEN">
+            <summary> Total length in bytes of an ARP header.</summary>
+        </member>
+        <member name="T:SharpPcap.PcapOfflineDevice">
+            <summary>
+            Capture packets from an offline pcap file
+            </summary>
+        </member>
+        <member name="F:SharpPcap.PcapOfflineDevice.PCAP_OFFLINE_DESCRIPTION">
+            <summary>
+            The description of this device
+            </summary>
+        </member>
+        <member name="M:SharpPcap.PcapOfflineDevice.#ctor(System.String)">
+            <summary>
+            Constructs a new offline device for reading 
+            pcap files
+            </summary>
+            <param name="pcapFile"></param>
+        </member>
+        <member name="M:SharpPcap.PcapOfflineDevice.Open">
+            <summary>
+            Opens the device for capture
+            </summary>
+        </member>
+        <member name="M:SharpPcap.PcapOfflineDevice.Open(System.Boolean)">
+            <summary>
+            Opens the device for capture
+            </summary>
+            <param name="promiscuous_mode">This parameter
+            has no affect on this method since it's an 
+            offline device</param>
+        </member>
+        <member name="M:SharpPcap.PcapOfflineDevice.Open(System.Boolean,System.Int32)">
+            <summary>
+            Opens the device for capture
+            </summary>
+            <param name="promiscuous_mode">This parameter
+            has no affect on this method since it's an 
+            offline device</param>
+            <param name="read_timeout">This parameter
+            has no affect on this method since it's an 
+            offline device</param>
+        </member>
+        <member name="M:SharpPcap.PcapOfflineDevice.SetFilter(System.String)">
+            <summary>
+            Setting a capture filter on this offline device is not supported
+            </summary>
+        </member>
+        <member name="P:SharpPcap.PcapOfflineDevice.FileName">
+            <summary>
+            The underlying pcap file name
+            </summary>
+        </member>
+        <!-- 对于成员“T:SharpPcap.Packets.HTTPPacket”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“T:SharpPcap.Packets.TCPPacket”忽略有格式错误的 XML 注释 -->
+        <member name="F:SharpPcap.Packets.TCPPacket.serialVersionUID">
+            <summary> </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.TCPPacket.#ctor(System.Int32,System.Byte[])">
+            <summary> Create a new TCP packet.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.TCPPacket.#ctor(System.Int32,System.Byte[],System.Boolean)">
+            <summary> Create a new TCP packet.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.TCPPacket.#ctor(System.Int32,System.Byte[],SharpPcap.Packets.Util.Timeval)">
+            <summary> Create a new TCP packet.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.TCPPacket.ComputeTCPChecksum(System.Boolean)">
+            <summary> Computes the TCP checksum, optionally updating the TCP checksum header.
+            
+            </summary>
+            <param name="update">Specifies whether or not to update the TCP checksum header
+            after computing the checksum. A value of true indicates the
+            header should be updated, a value of false indicates it should
+            not be updated.
+            </param>
+            <returns> The computed TCP checksum.
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Packets.TCPPacket.ComputeTCPChecksum">
+            <summary> Same as <code>computeTCPChecksum(true);</code>
+            
+            </summary>
+            <returns> The computed TCP checksum value.
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Packets.TCPPacket.getUrgentPointer">
+            <summary> Fetch the urgent pointer.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.TCPPacket.setUrgentPointer(System.Int32)">
+            <summary> Sets the urgent pointer.
+            
+            </summary>
+            <param name="pointer">The urgent pointer value.
+            </param>
+        </member>
+        <member name="M:SharpPcap.Packets.TCPPacket.SetData(System.Byte[])">
+            <summary> Sets the data section of this tcp packet</summary>
+            <param name="data">the data bytes
+            </param>
+        </member>
+        <member name="M:SharpPcap.Packets.TCPPacket.ToString">
+            <summary> Convert this TCP packet to a readable string.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.TCPPacket.ToColoredString(System.Boolean)">
+            <summary> Generate string with contents describing this TCP packet.</summary>
+            <param name="colored">whether or not the string should contain ansi
+            color escape sequences.
+            </param>
+        </member>
+        <member name="M:SharpPcap.Packets.TCPPacket.ToColoredVerboseString(System.Boolean)">
+            <summary> Convert this TCP packet to a verbose.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.SourcePort">
+            <summary> Fetch the port number on the source host.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.DestinationPort">
+            <summary> Fetches the port number on the destination host.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.SequenceNumber">
+            <summary> Fetch the packet sequence number.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.AcknowledgmentNumber">
+            <summary>    Fetch the packet acknowledgment number.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.TCPHeaderLength">
+            <summary> Fetch the TCP header length in bytes.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.HeaderLength">
+            <summary> Fetches the packet TCP header length.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.PayloadDataLength">
+            <summary> Fetches the length of the payload data.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.WindowSize">
+            <summary> Fetch the window size.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.TCPChecksum">
+            <summary> Fetch the header checksum.</summary>
+            <summary> Set the checksum of the TCP header</summary>
+            <param name="cs">the checksum value
+            </param>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.ValidChecksum">
+            <summary> Check if the TCP packet is valid, checksum-wise.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.TCPPacketByteLength">
+            <returns> The TCP packet length in bytes.  This is the size of the
+            IP packet minus the size of the IP header.
+            </returns>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.Urg">
+            <summary> Check the URG flag, flag indicates if the urgent pointer is valid.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.Ack">
+            <summary> Check the ACK flag, flag indicates if the ack number is valid.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.Psh">
+            <summary> Check the PSH flag, flag indicates the receiver should pass the
+            data to the application as soon as possible.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.Rst">
+            <summary> Check the RST flag, flag indicates the session should be reset between
+            the sender and the receiver.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.Syn">
+            <summary> Check the SYN flag, flag indicates the sequence numbers should
+            be synchronized between the sender and receiver to initiate
+            a connection.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.Fin">
+            <summary> Check the FIN flag, flag indicates the sender is finished sending.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.TCPHeader">
+            <summary> Fetch the TCP header a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.Header">
+            <summary> Fetch the TCP header as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.TCPData">
+            <summary> Fetch the TCP data as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.Color">
+            <summary> Fetch ascii escape sequence of the color associated with this packet type.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.Checksum">
+            <summary> Fetch the header checksum.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.TCPPacket.Data">
+            <summary> Fetch the TCP data as a byte array.</summary>                          
+        </member>
+        <member name="M:SharpPcap.Packets.HTTPPacket.#ctor(System.Int32,System.Byte[])">
+            <summary> Create a new HTTP packet.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.HTTPPacket.#ctor(System.Int32,System.Byte[],System.Boolean)">
+            <summary> Create a new HTTP packet.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.HTTPPacket.#ctor(System.Int32,System.Byte[],SharpPcap.Packets.Util.Timeval)">
+            <summary> Create a new HTTP packet.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.HTTPPacket.HTTPInfo">
+            <summary> 拆分后的HTTP报文信息</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.HTTPPacket.HTTP1stLine">
+            <summary> 细分HTTP报文第一行信息</summary>
+        </member>
+        <member name="T:SharpPcap.Packets.Util.ArrayHelper">
+            <summary> Utility functions for populating and manipulating arrays.
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.Util.ArrayHelper.join(System.Byte[],System.Byte[])">
+            <summary> Join two arrays.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.Util.ArrayHelper.extractLong(System.Byte[],System.Int32,System.Int32)">
+            <summary> Extract a long from a byte array.
+            
+            </summary>
+            <param name="bytes">an array.
+            </param>
+            <param name="pos">the starting position where the integer is stored.
+            </param>
+            <param name="cnt">the number of bytes which contain the integer.
+            </param>
+            <returns> the long, or <b>0</b> if the index/length to use 
+            would cause an ArrayOutOfBoundsException
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Packets.Util.ArrayHelper.extractInteger(System.Byte[],System.Int32,System.Int32)">
+            <summary> Extract an integer from a byte array.
+            
+            </summary>
+            <param name="bytes">an array.
+            </param>
+            <param name="pos">the starting position where the integer is stored.
+            </param>
+            <param name="cnt">the number of bytes which contain the integer.
+            </param>
+            <returns> the integer, or <b>0</b> if the index/length to use 
+            would cause an ArrayOutOfBoundsException
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Packets.Util.ArrayHelper.insertLong(System.Byte[],System.Int64,System.Int32,System.Int32)">
+            <summary> Insert data contained in a long integer into an array.
+            
+            </summary>
+            <param name="bytes">an array.
+            </param>
+            <param name="value">the long to insert into the array.
+            </param>
+            <param name="pos">the starting position into which the long is inserted.
+            </param>
+            <param name="cnt">the number of bytes to insert.
+            </param>
+        </member>
+        <member name="M:SharpPcap.Packets.Util.ArrayHelper.toBytes(System.Int64,System.Int32)">
+            <summary> Convert a long integer into an array of bytes.
+            
+            </summary>
+            <param name="value">the long to convert.
+            </param>
+            <param name="cnt">the number of bytes to convert.
+            </param>
+        </member>
+        <member name="M:SharpPcap.Packets.Util.ArrayHelper.toBytesLittleEndian(System.Int64,System.Int32)">
+            <summary> Convert a long integer into an array of bytes, little endian format. 
+            (i.e. this does the same thing as toBytes() but returns an array 
+            in reverse order from the array returned in toBytes().
+            </summary>
+            <param name="value">the long to convert.
+            </param>
+            <param name="cnt">the number of bytes to convert.
+            </param>
+        </member>
+        <member name="T:SharpPcap.Packets.IGMPMessage">
+            <summary> IGMP message utility class.
+            
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IGMPMessage.getDescription(System.Int32)">
+            <summary> Fetch an IGMP message.</summary>
+            <param name="code">the code associated with the message.
+            </param>
+            <returns> a message describing the significance of the IGMP code.
+            </returns>
+        </member>
+        <member name="F:SharpPcap.Packets.IGMPMessage.messages">
+            <summary> 'Human-readable' IGMP messages.</summary>
+        </member>
+        <!-- 对于成员“T:SharpPcap.Packets.ARPPacket”忽略有格式错误的 XML 注释 -->
+        <member name="M:SharpPcap.Packets.ARPPacket.#ctor(System.Int32,System.Byte[])">
+            <summary> Create a new ARP packet.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.ARPPacket.#ctor(System.Int32,System.Byte[],SharpPcap.Packets.Util.Timeval)">
+            <summary> Create a new ARP packet.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.ARPPacket.ToString">
+            <summary> Convert this ARP packet to a readable string.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.ARPPacket.ToColoredString(System.Boolean)">
+            <summary> Generate string with contents describing this ARP packet.</summary>
+            <param name="colored">whether or not the string should contain ansi
+            color escape sequences.
+            </param>
+        </member>
+        <member name="P:SharpPcap.Packets.ARPPacket.ARPOperation">
+            <summary> Fetch the operation code.
+            Usually one of ARPFields.{ARP_OP_REQ_CODE, ARP_OP_REP_CODE}.
+            </summary>
+            <summary> Sets the operation code.
+            Usually one of ARPFields.{ARP_OP_REQ_CODE, ARP_OP_REP_CODE}.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ARPPacket.ARPSenderProtoAddress">
+            <summary> Fetch the proto sender address.</summary>
+            <summary> Sets the proto sender address.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ARPPacket.ARPTargetProtoAddress">
+            <summary> Fetch the proto sender address.</summary>
+            <summary> Sets the proto sender address.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ARPPacket.ARPHeader">
+            <summary> Fetch the arp header, excluding arp data payload.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ARPPacket.ARPData">
+            <summary> Fetch data portion of the arp header.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ARPPacket.Header">
+            <summary> Fetch the arp header, excluding arp data payload.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ARPPacket.Color">
+            <summary> Fetch ascii escape sequence of the color associated with this packet type.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ARPPacket.ARPSenderHwAddress">
+            <summary> Gets/Sets the hardware source address.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ARPPacket.ARPTargetHwAddress">
+            <summary> Gets/Sets the hardware destination address.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.ARPPacket.Data">
+            <summary> Fetch data portion of the arp header.</summary>
+        </member>
+        <member name="T:SharpPcap.Version">
+            <summary>
+            Represent the current version of SharpPcap.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Version.VersionString">
+            <summary>
+            Returns the current version string of the SharpPcap library
+            </summary>
+            <returns>the current version string of the SharpPcap library</returns>
+        </member>
+        <member name="T:SharpPcap.Packets.UDPFields_Fields">
+            <summary> IP protocol field encoding information.
+            
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.UDPFields_Fields.UDP_PORT_LEN">
+            <summary> Length of a UDP port in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.UDPFields_Fields.UDP_LEN_LEN">
+            <summary> Length of the header length field in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.UDPFields_Fields.UDP_CSUM_LEN">
+            <summary> Length of the checksum field in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.UDPFields_Fields.UDP_SP_POS">
+            <summary> Position of the source port.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.UDPFields_Fields.UDP_DP_POS">
+            <summary> Position of the destination port.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.UDPFields_Fields.UDP_LEN_POS">
+            <summary> Position of the header length.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.UDPFields_Fields.UDP_CSUM_POS">
+            <summary> Position of the header checksum length.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.UDPFields_Fields.UDP_HEADER_LEN">
+            <summary> Length of a UDP header in bytes.</summary>
+        </member>
+        <member name="T:SharpPcap.Packets.IPProtocol">
+            <summary> IPProtocol utility class.
+            
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPProtocol.getDescription(System.Int32)">
+            <summary> Fetch a protocol description.</summary>
+            <param name="code">the code associated with the message.
+            </param>
+            <returns> a message describing the significance of the IP protocol.
+            </returns>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.messages">
+            <summary> 'Human-readable' IP protocol descriptions.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPProtocol.extractProtocol(System.Int32,System.Byte[])">
+            <summary> Extract the protocol code from packet data. The packet data 
+            must contain an IP datagram.
+            The protocol code specifies what kind of information is contained in the 
+            data block of the ip datagram.
+            
+            </summary>
+            <param name="lLen">the length of the link-level header.
+            </param>
+            <param name="packetBytes">packet bytes, including the link-layer header.
+            </param>
+            <returns> the IP protocol code. i.e. 0x06 signifies TCP protocol.
+            </returns>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.IP">
+            <summary> Dummy protocol for TCP. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.HOPOPTS">
+            <summary> IPv6 Hop-by-Hop options. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.ICMP">
+            <summary> Internet Control Message Protocol. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.IGMP">
+            <summary> Internet Group Management Protocol.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.IPIP">
+            <summary> IPIP tunnels (older KA9Q tunnels use 94). </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.TCP">
+            <summary> Transmission Control Protocol. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.EGP">
+            <summary> Exterior Gateway Protocol. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.PUP">
+            <summary> PUP protocol. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.UDP">
+            <summary> User Datagram Protocol. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.IDP">
+            <summary> XNS IDP protocol. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.TP">
+            <summary> SO Transport Protocol Class 4. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.IPV6">
+            <summary> IPv6 header. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.ROUTING">
+            <summary> IPv6 routing header. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.FRAGMENT">
+            <summary> IPv6 fragmentation header. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.RSVP">
+            <summary> Reservation Protocol. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.GRE">
+            <summary> General Routing Encapsulation. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.ESP">
+            <summary> encapsulating security payload. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.AH">
+            <summary> authentication header. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.ICMPV6">
+            <summary> ICMPv6. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.NONE">
+            <summary> IPv6 no next header. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.DSTOPTS">
+            <summary> IPv6 destination options. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.MTP">
+            <summary> Multicast Transport Protocol. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.ENCAP">
+            <summary> Encapsulation Header. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.PIM">
+            <summary> Protocol Independent Multicast. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.COMP">
+            <summary> Compression Header Protocol. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.RAW">
+            <summary> Raw IP packets. </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.INVALID">
+            <summary> Unrecognized IP protocol.
+            WARNING: this only works because the int storage for the protocol
+            code has more bits than the field in the IP header where it is stored.
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPProtocol.IPProtocolType.MASK">
+            <summary> IP protocol mask.</summary>
+        </member>
+        <member name="T:SharpPcap.Packets.IPPort">
+            <summary> IP port utility class.
+            
+            </summary>
+        </member>
+        <member name="M:SharpPcap.Packets.IPPort.getDescription(System.Int32)">
+            <summary> Fetch a well-known IP port description.</summary>
+            <param name="port">the port associated with the description.
+            </param>
+            <returns> a description of the ip port.
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Packets.IPPort.getName(System.Int32)">
+            <summary> Fetch a well-known IP port name.</summary>
+            <param name="port">the port associated with the name.
+            </param>
+            <returns> the name of the ip port.
+            </returns>
+        </member>
+        <member name="F:SharpPcap.Packets.IPPort.descriptions">
+            <summary> 'Human-readable' IP port descriptions.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IPPort.names">
+            <summary> 'Human-readable' TCP port names.</summary>
+        </member>
+        <member name="T:SharpPcap.Packets.ICMPMessages_Fields">
+            <summary> Code constants for ICMP message types.
+            
+            Taken originally from tcpdump/print-icmp.c
+            
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.ECHO_REPLY">
+            <summary> Echo reply.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.UNREACH_NET">
+            <summary> Destination network unreachable.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.UNREACH_HOST">
+            <summary> Destination host unreachable.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.UNREACH_PROTOCOL">
+            <summary> Bad protocol.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.UNREACH_PORT">
+            <summary> Bad port.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.UNREACH_NEEDFRAG">
+            <summary> IP_DF caused drop.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.UNREACH_SRCFAIL">
+            <summary> Src route failed.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.UNREACH_NET_UNKNOWN">
+            <summary> Unknown network.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.UNREACH_HOST_UNKNOWN">
+            <summary> Unknown host.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.UNREACH_ISOLATED">
+            <summary> Src host isolated.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.UNREACH_NET_PROHIB">
+            <summary> Network access prohibited.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.UNREACH_HOST_PROHIB">
+            <summary> Host access prohibited.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.UNREACH_TOSNET">
+            <summary> Bad TOS for net.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.UNREACH_TOSHOST">
+            <summary> Bad TOS for host.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.SOURCE_QUENCH">
+            <summary> Packet lost, slow down.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.REDIRECT_NET">
+            <summary> Shorter route to network.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.REDIRECT_HOST">
+            <summary> Shorter route to host.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.REDIRECT_TOSNET">
+            <summary> Shorter route for TOS and network.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.REDIRECT_TOSHOST">
+            <summary> Shorter route for TOS and host.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.ECHO">
+            <summary> Echo request.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.ROUTER_ADVERT">
+            <summary> router advertisement</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.ROUTER_SOLICIT">
+            <summary> router solicitation</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.TIME_EXCEED_INTRANS">
+            <summary> time exceeded in transit.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.TIME_EXCEED_REASS">
+            <summary> time exceeded in reass.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.PARAM_PROB">
+            <summary> ip header bad; option absent.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.TSTAMP">
+            <summary> timestamp request </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.TSTAMP_REPLY">
+            <summary> timestamp reply </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.IREQ">
+            <summary> information request </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.IREQ_REPLY">
+            <summary> information reply </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.MASK_REQ">
+            <summary> address mask request </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.ICMPMessages_Fields.MASK_REPLY">
+            <summary> address mask reply </summary>
+        </member>
+        <member name="T:SharpPcap.PcapStatistics">
+            <summary>
+            Holds network statistics for a Pcap Devices
+            </summary>
+        </member>
+        <member name="F:SharpPcap.PcapStatistics.m_pktHdr">
+            <summary>
+            This holds time value
+            </summary>
+        </member>
+        <member name="F:SharpPcap.PcapStatistics.m_pktData">
+            <summary>
+            This holds byte received and packets received
+            </summary>
+        </member>
+        <member name="M:SharpPcap.PcapStatistics.#ctor(SharpPcap.PcapHeader,SharpPcap.PcapUnmanagedStructures.PCAP_PKTDATA)">
+            <summary>
+            Constructs a new Pcap Statistics strcuture
+            </summary>
+            <param name="pktHdr">Time value as PCAP_PKTHDR</param>
+            <param name="pktData">Statistics values as PCAP_PKTDATA</param>
+        </member>
+        <member name="P:SharpPcap.PcapStatistics.RecievedPackets">
+            <summary>
+            Number of packets received since last sample
+            </summary>
+        </member>
+        <member name="P:SharpPcap.PcapStatistics.RecievedBytes">
+            <summary>
+            Number of bytes received since last sample
+            </summary>
+        </member>
+        <member name="P:SharpPcap.PcapStatistics.Seconds">
+            <summary>
+            The 'Seconds' part of the timestamp
+            </summary>
+        </member>
+        <member name="P:SharpPcap.PcapStatistics.MicroSeconds">
+            <summary>
+            The 'MicroSeconds' part of the timestamp
+            </summary>
+        </member>
+        <member name="P:SharpPcap.PcapStatistics.Date">
+            <summary>
+            The timestamps
+            </summary>
+        </member>
+        <member name="T:SharpPcap.Packets.TCPFields_Fields">
+            <summary> IP protocol field encoding information.
+            
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPFields_Fields.TCP_PORT_LEN">
+            <summary> Length of a TCP port in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPFields_Fields.TCP_SEQ_LEN">
+            <summary> Length of the sequence number in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPFields_Fields.TCP_ACK_LEN">
+            <summary> Length of the acknowledgment number in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPFields_Fields.TCP_FLAG_LEN">
+            <summary> Length of the header length and flags field in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPFields_Fields.TCP_WIN_LEN">
+            <summary> Length of the window size field in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPFields_Fields.TCP_CSUM_LEN">
+            <summary> Length of the checksum field in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPFields_Fields.TCP_URG_LEN">
+            <summary> Length of the urgent field in bytes.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPFields_Fields.TCP_SP_POS">
+            <summary> Position of the source port field.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPFields_Fields.TCP_DP_POS">
+            <summary> Position of the destination port field.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPFields_Fields.TCP_SEQ_POS">
+            <summary> Position of the sequence number field.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPFields_Fields.TCP_ACK_POS">
+            <summary> Position of the acknowledgment number field.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPFields_Fields.TCP_FLAG_POS">
+            <summary> Position of the header length and flags field.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPFields_Fields.TCP_WIN_POS">
+            <summary> Position of the window size field.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPFields_Fields.TCP_CSUM_POS">
+            <summary> Position of the checksum field.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPFields_Fields.TCP_URG_POS">
+            <summary> Position of the urgent pointer field.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.TCPFields_Fields.TCP_HEADER_LEN">
+            <summary> Length in bytes of a TCP header.</summary>
+        </member>
+        <member name="T:SharpPcap.PcapException">
+            <summary>
+            General Pcap Exception.
+            </summary>
+        </member>
+        <member name="T:SharpPcap.PcapDeviceNotReadyException">
+            <summary>
+            A PcapDevice or dumpfile is not ready for capture operations.
+            </summary>
+        </member>
+        <!-- 对于成员“T:SharpPcap.Packets.UDPPacket”忽略有格式错误的 XML 注释 -->
+        <member name="M:SharpPcap.Packets.UDPPacket.SetData(System.Byte[])">
+            <summary>
+            Sets the data section of this udp packet
+            </summary>
+            <param name="data">the data bytes</param>
+        </member>
+        <member name="M:SharpPcap.Packets.UDPPacket.#ctor(System.Int32,System.Byte[])">
+            <summary> Create a new UDP packet.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.UDPPacket.#ctor(System.Int32,System.Byte[],SharpPcap.Packets.Util.Timeval)">
+            <summary> Create a new UDP packet.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.UDPPacket.ComputeUDPChecksum(System.Boolean)">
+            <summary> Computes the UDP checksum, optionally updating the UDP checksum header.
+            
+            </summary>
+            <param name="update">Specifies whether or not to update the UDP checksum header
+            after computing the checksum. A value of true indicates the
+            header should be updated, a value of false indicates it should
+            not be updated.
+            </param>
+            <returns> The computed UDP checksum.
+            </returns>
+        </member>
+        <member name="M:SharpPcap.Packets.UDPPacket.ToString">
+            <summary> Convert this UDP packet to a readable string.</summary>
+        </member>
+        <member name="M:SharpPcap.Packets.UDPPacket.ToColoredString(System.Boolean)">
+            <summary> Generate string with contents describing this UDP packet.</summary>
+            <param name="colored">whether or not the string should contain ansi
+            color escape sequences.
+            </param>
+        </member>
+        <member name="P:SharpPcap.Packets.UDPPacket.SourcePort">
+            <summary> Fetch the port number on the source host.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.UDPPacket.DestinationPort">
+            <summary> Fetch the port number on the target host.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.UDPPacket.UDPLength">
+            <summary> Fetch the total length of the UDP packet, including header and
+            data payload, in bytes.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.UDPPacket.UDPChecksum">
+            <summary> Fetch the header checksum.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.UDPPacket.ValidChecksum">
+            <summary> Check if the TCP packet is valid, checksum-wise.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.UDPPacket.UDPHeader">
+            <summary> Fetch the UDP header a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.UDPPacket.Header">
+            <summary> Fetch the UDP header as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.UDPPacket.UDPHeaderLength">
+            <summary> Fetch the UDP header length in bytes.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.UDPPacket.HeaderLength">
+            <summary> Fetches the packet header length.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.UDPPacket.PayloadDataLength">
+            <summary> Fetches the length of the payload data.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.UDPPacket.UDPData">
+            <summary> Fetch the UDP data as a byte array.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.UDPPacket.Color">
+            <summary> Fetch ascii escape sequence of the color associated with this packet type.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.UDPPacket.Length">
+            <summary> Fetch the total length of the UDP packet, including header and
+            data payload, in bytes.
+            </summary>
+        </member>
+        <member name="P:SharpPcap.Packets.UDPPacket.Checksum">
+            <summary> Fetch the header checksum.</summary>
+        </member>
+        <member name="P:SharpPcap.Packets.UDPPacket.Data">
+            <summary> Fetch the UDP data as a byte array.</summary>
+        </member>
+        <member name="T:SharpPcap.ChecksumUtils">
+            <summary>
+            Computes the one's sum on a byte array.
+            Based TCP/IP Illustrated Vol. 2(1995) by Gary R. Wright and W. Richard
+            Stevens. Page 236. And on http://www.cs.utk.edu/~cs594np/unp/checksum.html
+            </summary>
+        </member>
+        <member name="M:SharpPcap.ChecksumUtils.OnesComplementSum(System.Byte[])">
+            <summary>
+            Computes the one's complement sum on a byte array
+            </summary>
+        </member>
+        <member name="M:SharpPcap.ChecksumUtils.OnesComplementSum(System.Byte[],System.Int32,System.Int32)">
+            <summary> 
+            Computes the one's complement sum on a byte array
+            </summary>
+        </member>
+        <member name="T:SharpPcap.PcapUnmanagedStructures.pcap_if">
+            <summary>
+            Item in a list of interfaces.
+            </summary>
+        </member>
+        <member name="T:SharpPcap.PcapUnmanagedStructures.pcap_addr">
+            <summary>
+            Representation of an interface address.
+            </summary>
+        </member>
+        <member name="T:SharpPcap.PcapUnmanagedStructures.sockaddr">
+            <summary>
+            Structure used by kernel to store a generic address
+            Look at the sa_family value to determine which specific structure to use
+            'struct sockaddr'
+            </summary>
+        </member>
+        <member name="T:SharpPcap.PcapUnmanagedStructures.in_addr">
+            <summary>
+            Structure that holds an ipv4 address
+            </summary>
+        </member>
+        <member name="T:SharpPcap.PcapUnmanagedStructures.sockaddr_in">
+            <summary>
+            Structure that holds an ipv4 address
+            'struct sockaddr'
+            </summary>
+        </member>
+        <member name="T:SharpPcap.PcapUnmanagedStructures.sockaddr_in6">
+            <summary>
+            Structure that holds an ipv6 address
+            NOTE: we cast the 'struct sockaddr*' to this structure based on the sa_family type
+            'struct sockaddr_in6'
+            </summary>
+        </member>
+        <member name="T:SharpPcap.PcapUnmanagedStructures.sockaddr_ll">
+            <summary>
+            Structure to represent a low level address, like a hardware address
+            </summary>
+        </member>
+        <member name="T:SharpPcap.PcapUnmanagedStructures.timeval_unix">
+             <summary>
+             Windows and Unix differ in their memory models and make it difficult to
+             support struct timeval in a single library, like this one, across
+             multiple platforms.
+            
+             See http://en.wikipedia.org/wiki/64bit#Specific_data_models
+            
+             The issue is that struct timeval { long tv_sec; long tv_usec; }
+             has different sizes on Linux 32 and 64bit but the same size on
+             Windows 32 and 64 bit
+            
+             Thanks to Jon Pryor for his help in figuring out both the issue with Linux
+             32/64bit and the issue between Windows and Unix
+             </summary>
+        </member>
+        <member name="T:SharpPcap.PcapUnmanagedStructures.timeval_windows">
+            <summary>
+            Windows version of struct timeval, the longs are 32bit even on 64-bit versions of Windows
+            </summary>
+        </member>
+        <member name="T:SharpPcap.PcapUnmanagedStructures.pcap_pkthdr_unix">
+            <summary>
+            Each packet in the dump file is prepended with this generic header.
+            This gets around the problem of different headers for different
+            packet interfaces.
+            </summary>
+        </member>
+        <member name="T:SharpPcap.PcapUnmanagedStructures.pcap_pkthdr_windows">
+            <summary>
+            Each packet in the dump file is prepended with this generic header.
+            This gets around the problem of different headers for different
+            packet interfaces.
+            </summary>
+        </member>
+        <member name="T:SharpPcap.PcapUnmanagedStructures.PCAP_PKTDATA">
+            <summary>
+            Packet data bytes
+            NOTE: This struct doesn't exist in header files, it is a construct to map to an
+                   unmanaged byte array
+            </summary>
+        </member>
+        <member name="T:SharpPcap.PcapUnmanagedStructures.bpf_program">
+            <summary>
+            A BPF pseudo-assembly program for packet filtering
+            </summary>
+        </member>
+        <member name="T:SharpPcap.PcapUnmanagedStructures.pcap_send_queue">
+            <summary>
+            A queue of raw packets that will be sent to the network with pcap_sendqueue_transmit()
+            </summary>
+        </member>
+        <member name="T:SharpPcap.PcapSendQueue">
+            <summary>
+            Summary description for PcapSendQueue.
+            </summary>
+        </member>
+        <member name="M:SharpPcap.PcapSendQueue.#ctor(System.Int32)">
+            <summary>
+            Creates and allocates a new PcapSendQueue and 
+            </summary>
+            <param name="memSize">
+            The maximun amount of memory (in bytes) 
+            to allocate for the queue</param>
+        </member>
+        <member name="M:SharpPcap.PcapSendQueue.AddInternal(System.Byte[],SharpPcap.PcapHeader)">
+            <summary>
+            Add a packet to this send queue. The PcapHeader defines the packet length.
+            </summary>
+            <param name="packet">The packet bytes to add</param>
+            <param name="pcapHdr">The pcap header of the packet</param>
+            <returns>True if success, else false</returns>
+        </member>
+        <member name="M:SharpPcap.PcapSendQueue.Add(System.Byte[],SharpPcap.PcapHeader)">
+            <summary>
+            Add a packet to this send queue. 
+            </summary>
+            <param name="packet">The packet bytes to add</param>
+            <param name="pcapHdr">The pcap header of the packet</param>
+            <returns>True if success, else false</returns>
+        </member>
+        <member name="M:SharpPcap.PcapSendQueue.Add(System.Byte[])">
+            <summary>
+            Add a packet to this send queue. 
+            </summary>
+            <param name="packet">The packet bytes to add</param>
+            <returns>True if success, else false</returns>
+        </member>
+        <member name="M:SharpPcap.PcapSendQueue.Add(SharpPcap.Packets.Packet)">
+            <summary>
+            Add a packet to this send queue. 
+            </summary>
+            <param name="packet">The packet to add</param>
+            <returns>True if success, else false</returns>
+        </member>
+        <member name="M:SharpPcap.PcapSendQueue.Add(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Add a packet to this send queue.
+            </summary>
+            <param name="packet">The packet to add</param>
+            <param name="seconds">The 'seconds' part of the packet's timestamp</param>
+            <param name="miliseconds">The 'microseconds' part of the packet's timestamp</param>
+            <returns>True if success, else false</returns>
+        </member>
+        <!-- 对于成员“M:SharpPcap.PcapSendQueue.Transmit(SharpPcap.PcapDevice,System.Boolean)”忽略有格式错误的 XML 注释 -->
+        <member name="M:SharpPcap.PcapSendQueue.Dispose">
+            <summary>
+            Destroy the send queue. 
+            </summary>
+        </member>
+        <member name="P:SharpPcap.PcapSendQueue.CurrentLength">
+            <summary>
+            The current length in bytes of this queue
+            </summary>
+        </member>
+        <member name="T:SharpPcap.Packets.IGMPMessages_Fields">
+            <summary> Code constants for IGMP message types.
+            
+            From RFC #2236.
+            
+            </summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IGMPMessages_Fields.QUERY">
+            <summary> membership query.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IGMPMessages_Fields.V1_REPORT">
+            <summary> v1 membership report.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IGMPMessages_Fields.V2_REPORT">
+            <summary> v2 membership report.</summary>
+        </member>
+        <member name="F:SharpPcap.Packets.IGMPMessages_Fields.LEAVE">
+            <summary> Leave group.</summary>
+        </member>
+    </members>
+</doc>
